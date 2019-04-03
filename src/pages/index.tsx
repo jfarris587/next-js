@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import styled from "styled-components";
+import StyledButton from "../components/StyledButton/styled-button";
 
 class Index extends React.Component {
   state = {
@@ -11,10 +10,5 @@ class Index extends React.Component {
     return <StyledButton variant="contained">Styled UI Button</StyledButton>;
   }
 }
-
-const StyledButton = styled(Button)`
-  background: red;
-  color: white;
-`;
 
 export default Index;
