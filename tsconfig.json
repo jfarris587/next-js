@@ -19,5 +19,6 @@
     "lib": ["dom", "es2015", "es2016"],
     "outDir": ".next"
   },
+  "include": ["typings/**/*.ts"],
   "exclude": [".next", "server/**/*.*"]
 }

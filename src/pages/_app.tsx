@@ -6,10 +6,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import JssProvider from "react-jss/lib/JssProvider";
 import getPageContext from "./theme";
 import { create } from "jss";
+import { ApolloProvider, withApollo } from "react-apollo";
+import initApollo from "../services/apollo";
+import apolloClient from "../components/ApolloClient/apollo-client";
 
-class MyApp extends App {
+class MyApp extends App<{ apolloClient: any }, {}> {
   componentDidMount() {
-    // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
@@ -17,7 +19,9 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apolloClient } = this.props;
+    const isBrowser = typeof window !== "undefined";
+
     const jss = create({
       ...jssPreset(),
       insertionPoint: process.browser
@@ -30,28 +34,24 @@ class MyApp extends App {
         <Head>
           <title>My page</title>
         </Head>
-        {/* Wrap every page in Jss and Theme providers */}
-        <JssProvider
-          registry={getPageContext().sheetsRegistry}
-          generateClassName={getPageContext().generateClassName}
-          jss={jss}
-        >
-          {/* MuiThemeProvider makes the theme available down the React
-              tree thanks to React context. */}
-          <MuiThemeProvider
-            theme={getPageContext().theme}
-            sheetsManager={getPageContext().sheetsManager}
+        <ApolloProvider client={apolloClient}>
+          <JssProvider
+            registry={getPageContext().sheetsRegistry}
+            generateClassName={getPageContext().generateClassName}
+            jss={jss}
           >
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            {/* Pass pageContext to the _document though the renderPage enhancer
-                to render collected styles on server-side. */}
-            <Component pageContext={getPageContext()} {...pageProps} />
-          </MuiThemeProvider>
-        </JssProvider>
+            <MuiThemeProvider
+              theme={getPageContext().theme}
+              sheetsManager={getPageContext().sheetsManager}
+            >
+              <CssBaseline />
+              <Component pageContext={getPageContext()} {...pageProps} />
+            </MuiThemeProvider>
+          </JssProvider>
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default MyApp;
+export default apolloClient(MyApp);

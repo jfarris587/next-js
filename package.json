@@ -7,12 +7,18 @@
   },
   "dependencies": {
     "@material-ui/core": "latest",
+    "apollo-cache-inmemory": "latest",
+    "apollo-client": "latest",
+    "apollo-link-http": "latest",
+    "graphql": "^14.2.1",
+    "isomorphic-unfetch": "latest",
     "jss": "latest",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
+    "react-apollo": "^2.5.2",
     "react-dom": "latest",
-    "react-jss": "^8.1.0",
+    "react-jss": "latest",
     "styled-components": "latest"
   },
   "devDependencies": {
@@ -21,17 +27,18 @@
     "@types/react": "^16.8.8",
     "@types/styled-components": "^4.1.12",
     "@zeit/next-typescript": "^1.1.1",
-    "cross-env": "^5.2.0",
-    "nodemon": "^1.18.10",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.3.3333",
-    "babel-plugin-styled-components": "^1.8.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "babel-plugin-styled-components": "^1.8.0",
+    "cross-env": "^5.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^23.6.0",
+    "nodemon": "^1.18.10",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "ts-node": "^8.0.3",
+    "typescript": "^3.3.3333",
+    "ts-babel-node": "^1.1.1"
   }
 }
