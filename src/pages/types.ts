@@ -4,18 +4,6 @@ import { NextContext } from "next";
 import { NextAppContext } from "next/app";
 import { DefaultQuery } from "next/router";
 
-declare global {
-  namespace NodeJS {
-    interface Process {
-      browser?: boolean;
-    }
-
-    interface Global {
-      fetch?: any;
-    }
-  }
-}
-
 export interface WithApolloOptions {
   getDataFromTree?: "always" | "never" | "ssr";
 }

@@ -8,6 +8,7 @@ export default App => {
     static displayName = "withApollo(App)";
     static async getInitialProps(ctx) {
       const { Component, router } = ctx;
+      const isBrowser = typeof window !== "undefined";
 
       let appProps = {};
       if (App.getInitialProps) {
@@ -17,7 +18,7 @@ export default App => {
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
       const apollo = initApollo();
-      if (!process.browser) {
+      if (!isBrowser) {
         try {
           // Run all GraphQL queries
           await getDataFromTree(

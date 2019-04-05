@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import StyledButton from "../components/StyledButton/styled-button";
 
 class Index extends React.Component {
@@ -7,7 +7,16 @@ class Index extends React.Component {
   };
 
   render() {
-    return <StyledButton variant="contained">Styled UI Button</StyledButton>;
+    return (
+      <Fragment>
+        <a href="/a">a</a>
+        <br />
+        <a href="/b">b</a>
+        <br />
+
+        <StyledButton variant="contained">Styled UI Button</StyledButton>
+      </Fragment>
+    );
   }
 }
 

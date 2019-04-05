@@ -4,7 +4,7 @@ import Document, { Head, Main, NextScript } from "next/document";
 import flush from "styled-jsx/server";
 import { ServerStyleSheet } from "styled-components";
 
-class MyDocument extends Document {
+class MyDocument extends Document<{ pageContext: any }> {
   static async getInitialProps(ctx) {
     let pageContext;
     const page = ctx.renderPage(Component => {
